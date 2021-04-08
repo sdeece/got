@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
-import { ArrayInLine } from '../../common/ArrayInLine'
 import { bemClass } from '../../common/BemClassName'
+import { filterType } from '../../common/filterType'
+import { Characters } from './Characters'
+import { Books } from './Books'
+import { Houses } from './Houses'
 
 const rootClass = bemClass('info-row')
-const getProperty = (property) => property || <span className="spec-property">not know</span>
 
-const InfoRow = ({ item }) => {
+const InfoRow = ({ item, currentFilter }) => {
   const [isExpanded, setExpanded] = useState(false)
 
   if (!item.name) return null
@@ -19,42 +21,9 @@ const InfoRow = ({ item }) => {
       </div>
       {isExpanded && (
         <div className={rootClass('description')}>
-          <div>
-            <span className="label">Aliases:</span>
-            <ArrayInLine items={item.aliases} />
-          </div>
-          <div>
-            <span className="label">Born:</span>
-            <span>{getProperty(item.born)}</span>
-          </div>
-          <div>
-            <span className="label">Culture:</span>
-            <span>{getProperty(item.culture)}</span>
-          </div>
-          <div>
-            <span className="label">Died:</span>
-            <span>{getProperty(item.died)}</span>
-          </div>
-          <div>
-            <span className="label">Father:</span>
-            <span>{getProperty(item.father)}</span>
-          </div>
-          <div>
-            <span className="label">Gender:</span>
-            <span>{getProperty(item.gender)}</span>
-          </div>
-          <div>
-            <span className="label">Mother:</span>
-            <span>{getProperty(item.mother)}</span>
-          </div>
-          <div>
-            <span className="label">Name:</span>
-            <span>{item.name}</span>
-          </div>
-          <div>
-            <span className="label">Titles:</span>
-            <ArrayInLine items={item.titles} />
-          </div>
+          {currentFilter === filterType.CHARACTERS && <Characters item={item} />}
+          {currentFilter === filterType.BOOKS && <Books item={item} />}
+          {currentFilter === filterType.HOUSES && <Houses item={item} />}
         </div>
       )}
     </div>

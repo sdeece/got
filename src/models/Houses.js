@@ -4,17 +4,17 @@ class Houses {
     this.region = data.region
     this.coatOfArms = data.coatOfArms
     this.words = data.words
-    this.titles = data.titles
-    this.seats = data.seats
+    this.titles = data.titles.filter(item => item)
+    this.seats = data.seats.filter(item => item)
     this.currentLord = data.currentLord
     this.heir = data.heir
     this.overlord = data.overlord
     this.founded = data.founded
     this.founder = data.founder
     this.diedOut = data.diedOut
-    this.ancestralWeapons = data.ancestralWeapons
-    this.cadetBranches = data.cadetBranches
-    this.swornMembers = data.swornMembers
+    this.ancestralWeapons = data.ancestralWeapons.filter(item => item)
+    this.cadetBranches = data.cadetBranches.filter(item => item)
+    this.swornMembers = data.swornMembers.filter(item => item)
   }
 
   static JsonTo(data) {
