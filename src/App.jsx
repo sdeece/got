@@ -1,9 +1,10 @@
 import React from 'react'
+import { InfoTable } from './components/InfoTable'
 
 const App = () => {
   return (
-    <div>
-      123
+    <div className="container app" >
+      <InfoTable />
     </div>
   )
 }
